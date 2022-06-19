@@ -1,12 +1,19 @@
-function getExtremeElements(array) {
-  // Change code below this line
-  array = getExtremeElements(array).splice(1, array.length - 2);
+function includes(array, value) {
+  
+  let result = true;
+  for (const number of array) { 
+  if (number === value) {return  true}
+  }
 
-  // Change code above this line
-}
-console.log([1, 2, 3, 4, 5]);
-console.log(["Earth", "Mars", "Venus"]);
-console.log(["apple", "peach", "pear", "banana"]);
+  return result = false;
 
-console.log;
+    // Change code above this line
+  }
 
+ 
+console.log(includes([1, 2, 3, 4, 5], 3));
+console.log(includes([1, 2, 3, 4, 5], 17));
+console.log(includes(["Earth", "Mars", "Venus", "Jupiter", "Saturn"], "Jupiter"));
+console.log(includes(["Earth", "Mars", "Venus", "Jupiter", "Saturn"], "Uranus"));
+console.log(includes(["apple", "plum", "pear", "orange"], "plum"));
+console.log(includes(["apple", "plum", "pear", "orange"], "kiwi"));
