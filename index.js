@@ -1,79 +1,115 @@
-// заказчица хочет чтобы каждое зелье было представлено не только именем, но и ценой, а в будущем может быть и другими характеристиками. Поэтому теперь в свойстве potions будет храниться массив объектов со следующими свойствами.
-
-// {Выполни рефакторинг методов объекта atTheOldToad так, чтобы они работали не с массивом строк, а с массивом объектов.
-
-// getPotions() - метод для получения всех зелий. Возвращает значение свойства potions.
-// addPotion(newPotion) - добавляет зелье newPotion (уже объект) в массив в свойстве potions, но только если такого зелья еще нет в инвентаре. В противном случае возвращается строка.
-// removePotion(potionName) - удаляет объект зелья с именем potionName из массива в свойстве potions.
-// updatePotionName(oldName, newName) - обновляет свойство name объекта-зелья с названием oldName на newName в массиве potions.
-// Объявлена переменная atTheOldToad
-// Значение переменной atTheOldToad это объект
-// Значение свойства atTheOldToad.getPotions это метод объекта
-// Вызов метода atTheOldToad.getPotions() для исходного объекта возвращает [ { name: "Speed potion", price: 460 }, { name: "Dragon breath", price: 780 }, { name: "Stone skin", price: 520 } ]
-// Значение свойства atTheOldToad.addPotion это метод объекта.
-// Для исходного объекта после вызова метода atTheOldToad.addPotion({ name: "Invisibility", price: 620 }), в массиве potions последним элементом будет этот объект
-// Для исходного объекта после вызова метода atTheOldToad.addPotion({ name: "Power potion", price: 270 }), в массиве potions последним элементом будет этот объект
-// Если добавляемое зелье уже есть в массиве potions, метод addPotion возвращает строку с текстом из исходного кода
-// Если добавляемое зелье уже есть в массиве potions, метод addPotion не добавляет в него передаваемый обьект
-// Для исходного объекта после вызова atTheOldToad.addPotion({ name: "Dragon breath", price: 700 }), массив potions не изменяется
-// Для исходного объекта после вызова atTheOldToad.addPotion({ name: "Stone skin", price: 240 }), массив potions не изменяется
-// Для исходного объекта вызов atTheOldToad.addPotion({ name: "Dragon breath", price: 700 }), возвращает строку "Error! Potion Dragon breath is already in your inventory!"
-// Для исходного объекта вызов atTheOldToad.addPotion({ name: "Stone skin", price: 240 }), возвращает строку "Error! Potion Stone skin is already in your inventory!"
-// Значение свойства atTheOldToad.removePotion это метод объекта
-// Для исходного объекта после вызова метода atTheOldToad.removePotion("Dragon breath"), в свойстве potions будет массив [ { name: "Speed potion", price: 460 }, { name: "Stone skin", price: 520 } ]
-// Для исходного объекта после вызова метода atTheOldToad.removePotion("Speed potion"), в свойстве potions будет массив [ { name: "Dragon breath", price: 780 }, { name: "Stone skin", price: 520 }]
-// Значение свойства atTheOldToad.updatePotionName это метод объекта
-// Для исходного объекта после вызова метода atTheOldToad.updatePotionName("Dragon breath", "Polymorth"), в свойстве potions будет массив [{ name: "Speed potion", price: 460 }, { name: "Polymorth", price: 780 }, { name: "Stone skin", price: 520 } ]
-// Для исходного объекта после вызова метода atTheOldToad.updatePotionName("Stone skin", "Invulnerability potion"), в свойстве potions будет массив[{ name: "Speed potion", price: 460 }, { name: "Dragon breath", price: 780 }, { name: "Invulnerability potion", price: 520 }]
-  // =======================
+// task 6
 
 
+// function filterArray(numbers, value) {
+//   const filteredNumbers = [];
+//   // Change code below this line
+ 
+//   numbers.forEach((number) => { if(number > value){
+//     filteredNumbers.push(number);
+//   }})
+
+//   // for (let i = 0; i < numbers.length; i += 1) {
+//   //   if (numbers[i] > value) {
+//   //     filteredNumbers.push(numbers[i]);
+//   //   }
+//   // }
+
+//   // Change code above this line
+//   return filteredNumbers;
+// }
+
+// /============ task 7
+// function getCommonElements(firstArray, secondArray) {
+//   const commonElements = [];
+//   // Change code below this line
+//   firstArray.forEach(element => {
+//     if
+//       (secondArray.includes(element)) {
+//       commonElements.push(element);
+//     }
+    
+//   });
+
+//   // for (let i = 0; i < firstArray.length; i += 1) {
+//   //   if (secondArray.includes(firstArray[i])) {
+//   //     commonElements.push(firstArray[i]);
+//   //   }
+//   // }
+
+//   return commonElements;
+//   // Change code above this line
+// }
+
+// function changeEven(numbers, value) {
+//   // Change code below this line
+//   const newNumbers = [];
+//   numbers.forEach(number => {
+//     if (number % 2 === 0) {
+//       newNumbers.push(number + value);
+      
+//     };
+//     newNumbers.push(number);
+    
+//   }
+//   )
+//    return newNumbers;
+//   // Change code above this line
+// }
+// console.log(changeEven([1, 2, 3, 4, 5], 10));
+// console.log(changeEven([2, 8, 3, 7, 4, 6], 10));
+// console.log(changeEven([17, 24, 68, 31, 42], 100));
 
 
 
-const atTheOldToad = {
-  potions: [
-    { name: "Speed potion", price: 460 },
-    { name: "Dragon breath", price: 780 },
-    { name: "Stone skin", price: 520 },
-  ],
-  // Change code below this line
-  getPotions() {
-    return this.potions;
-  },
-  addPotion(newPotion) {
-    for (const potion of this.potions){
-      if(potion.name === newPotion.name){
-        return `error!Potion ${newPotion.name} is already in your inventory!`;
-      }
-    }
-    return this.potions.push(newPotion);
-  },
-  removePotion(potionName) {
-    for(let i = 0; i < this.potions.length; i +=1){
-      if(this.potions[i].name === potionName){
-        this.potions.splice(i, 1);
-      }
-    }
-    return `Potion ${potionName} is not in inventory!`;
-  },
-  updatePotionName(oldName, newName) {
-    for(let i = 0; i < this.potions.length; i +=1){
-      if( this.potions[i].name === oldName){
-        this.potions[i].name = newName;
-        
-      }
-    }
-    return `Potion ${oldName} is not in inventory!`;
+// /================task 20============
+// Дополни код так, чтобы в переменной allGenres был массив всех жанров книг(свойство genres) из массива books, а в переменной uniqueGenres массив уникальных жанров - без повторений.
 
-  },
-  // Change code above this line
-};
+// const books = [
+//   {
+//     title: "The Last Kingdom",
+//     author: "Bernard Cornwell",
+//     genres: ["adventure", "history"],
+//   },
+//   {
+//     title: "Beside Still Waters",
+//     author: "Robert Sheckley",
+//     genres: ["fiction", "mysticism"],
+//   },
+//   {
+//     title: "Redder Than Blood",
+//     author: "Tanith Lee",
+//     genres: ["horror", "mysticism", "adventure"],
+//   },
+// ];
+// // Change code below this line
+// const allGenres = books.flatMap(book => book.genres);
+// const uniqueGenres = allGenres.filter((genres, index, allGenres) => allGenres.indexOf(genres) === index);
 
-console.log(atTheOldToad.getPotions());
-console.log(atTheOldToad.addPotion({ name: 'Invisibility', price: 620 }));
-console.table(atTheOldToad.addPotion({ name: 'Power potion', price: 270 }));
-console.log(atTheOldToad.addPotion({ name: "Dragon breath", price: 700 }));
-console.log(atTheOldToad.addPotion({ name: "Stone skin", price: 240 }));
-console.log(atTheOldToad.addPotion({ name: "Dragon breath", price: 700 }));
-console.log(atTheOldToad.addPotion({ name: "Stone skin", price: 240 }));
+// /================task 25============
+// Дополни функцию getFriends(users) так, чтобы она возвращала массив друзей всех пользователей (свойство friends). У нескольких пользователей могут быть одинаковые друзья, сделай так чтобы возвращаемый массив не содержал повторений.
+
+
+// const getFriends = (users) =>  users
+//     .flatMap((user) => user.friends)
+//   .filter((user, index, array) => array.indexOf(user) === index);
+    
+// /================task 34============
+// Игровому сервису необходим функционал подсчёта среднего времени проведённого в играх.Дополни код так, чтобы в переменной totalPlayTime получилось общее игровое время из массива playtimes.
+
+// const players = {
+//   mango: 1270,
+//   poly: 468,
+//   ajax: 710,
+//   kiwi: 244
+// };
+// const playtimes = Object.values(players); // [1270, 468, 710, 244]
+// // Change code below this line
+
+// const totalPlayTime = playtimes.reduce((acc , playtime) => { return acc + playtime;}, 0);
+
+// // Change code above this line
+// const averagePlayTime = totalPlayTime / playtimes.length;
+
+// / /================task 34============
+
