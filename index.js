@@ -111,5 +111,18 @@
 // // Change code above this line
 // const averagePlayTime = totalPlayTime / playtimes.length;
 
-// / /================task 34============
+// / /================task 47============
 
+// Дополни функцию getSortedFriends(users) так, чтобы она возвращала массив уникальных имён друзей(свойство friends) отсортированный по алфавиту.
+
+// const getSortedFriends = users =>
+// users.flatMap(user => user.friends)
+// .sort((a, b) => a.localeCompare(b))
+//         .filter((friend, index, array) => array.indexOf(friend) === index);
+
+// /================task 48============
+//  Дополни функцию getTotalBalanceByGender(users, gender) так, чтобы она возвращала общий баланс пользователей(свойство balance), пол которых(свойство gender) совпадает со значением параметра gender.
+ 
+const getTotalBalanceByGender = (users, gender) => users.filter( user => user.gender === gender).reduce((total, user) => {
+    return total+ user.balance;
+},0);
